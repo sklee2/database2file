@@ -12,8 +12,9 @@ buildscript {
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
-apply plugin: 'spring-boot' 
-
+apply plugin: 'spring-boot'
+apply plugin: 'application'
+mainClassName = System.getProperty("Db2fileApplication")
 jar {
 	baseName = 'dbtofile'  //artifact가 jar 이름이 되고 name이 Application.java prefix 명이 된다
 	version = '0.0.1-SNAPSHOT'
@@ -29,7 +30,7 @@ repositories {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-jdbc')
 	runtime('org.postgresql:postgresql')
-	testCompile('org.springframework.boot:spring-boot-starter-test') 
+	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
 
@@ -43,3 +44,10 @@ eclipse {
 task wrapper(type: Wrapper) {
 	gradleVersion = '2.9'
 }
+
+//add
+//bootRun {
+//	if ( project.hasProperty('args') ) {
+//		args project.args.split('\\s+')
+//	}
+//}
